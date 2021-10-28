@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +10,20 @@
   <link rel="stylesheet" href="./css/main.css">
   <title>Document</title>
 </head>
+
 <body>
   <div class="container">
     <div class="border border-info mt-3 p-4">
       <h1 class="h1 text-center text-info mt-2">Welcome to Super ToDo!</h1>
-    <form class="todo-form">
-      <input class="form-control todo-text-input w-70 mt-5" type="text" placeholder="What is your plan: " required>
-    </form>
+      <div class="row mt-5">
+        <div class="col-9">
+          <form class="todo-form d-flex justify-content-around">
+            <input class="form-control todo-text-input w-75" type="text" placeholder="What is your plan: " required>
+            <button class="btn add-btn btn-success px-5 w-25  ms-5" type="submit">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <ul class="todo-list"></ul>
     <div class="d-flex justify-content-around mt-4">
       <p class=""><span class="all-count"></span>All</p>
@@ -23,7 +31,7 @@
       <p class="uncompleted">uncompleted</p>
 
     </div>
-    </div>
+  </div>
   </div>
 
 
@@ -32,12 +40,16 @@
   <template id="super-todo-template">
     <li class="todo-list-item list-unstyled d-flex justify-content-between mt-3 border border-info p-2 w-70">
       <div>
-        <input class="todo-item-checkbox me-3 ms-2" type="checkbox">
+        <input class="form-check-input me-3 ms-2" type="checkbox">
         <span class="todo-template-text"></span>
       </div>
-      <button class="todo-delete-btn btn-primary">Delete</button>
+      <div>
+        <button class="todo-edit-btn btn-warning me-2">Edit</button>
+        <button class="todo-delete-btn btn-danger">Delete</button>
+      </div>
     </li>
   </template>
   <script src="./js/main.js"></script>
 </body>
+
 </html>

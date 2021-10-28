@@ -2,10 +2,10 @@ const elForm = document.querySelector(".todo-form");
 const elTodoInput = elForm.querySelector(".todo-text-input");
 const elTodoList = document.querySelector(".todo-list");
 const elTodoTamplated = document.querySelector("#super-todo-template").content;
-
+const elAddButton = document.querySelector(".add-btn");
 todoArr = [];
 
-function deleteTodo(evt){
+function deleteTodo(evt) {
   const todoId = evt.target.dataset.todoId;
 
   const foundTodoIndex = todoArr.findIndex((item) => item.id == todoId);
@@ -17,7 +17,7 @@ function deleteTodo(evt){
 function renderTodos(arr, element) {
   element.innerHTML = null;
   arr.forEach((todo) => {
-      todoTemplate = elTodoTamplated.cloneNode(true);
+    todoTemplate = elTodoTamplated.cloneNode(true);
     const todoTitleSpan = todoTemplate.querySelector(".todo-template-text");
     todoTitleSpan.textContent = todo.title;
     const todoDeleteBtn = todoTemplate.querySelector(".todo-delete-btn");
@@ -29,20 +29,17 @@ function renderTodos(arr, element) {
 
 elForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-   
+  const time = new Date();
   elInput = elTodoInput.value.trim();
 
-  todoArr.push(
-    {
-      id: todoArr.length,
-      title: elInput,
-      isCompleted: false
-    }
-  )
+  todoArr.push({
+    id: todoArr.length,
+    title: elInput,
+    isCompleted: false,
+    time: time.toLocaleString
+  })
 
-  console.log(todoArr);
+  console.log(todoArr.time);
   elTodoInput.value = null;
-    renderTodos(todoArr, elTodoList)
+  renderTodos(todoArr, elTodoList)
 })
-
-
